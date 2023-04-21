@@ -35,7 +35,15 @@ export const updateTask = async (req, res, next) => {
 
 export const getAllTasks = async (req, res, next) => {
   try {
-    const tasks = await Task.find({});
+    const { title, descriptions } = req.query;
+    const queryObject = {};
+    if (title) {
+      queryObject.title = { $regex: title, $options: 'i' };
+    }
+    if (descriptions) {
+      queryObject.descriptions = { $regex: descriptions, $options: 'i' };
+    }
+    const tasks = await Task.find(queryObject);
     return res.status(200).json(tasks);
   } catch (err) {
     return next(err);
