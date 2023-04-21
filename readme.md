@@ -14,8 +14,8 @@ npm install
 
 3. Create a `.env` file in the root directory of the project, and add the following environment variables:
 
-MONGO_URI=<YOUR_MONGODB_URI>
-SECRET_KEY=<YOUR_SECRET_KEY>
+DB_CONNECTION_STRING=<YOUR_MONGODB_URI>
+JWT_SECRET=<YOUR_SECRET_KEY>
 
 
 4. Start the server:
